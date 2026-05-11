@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 8px 0;
+}
+
+#search-lab-input {
+    width: 100%;
+    max-width: 360px;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.laboratorio {
+    border: 1px solid #999;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.equipo {
+    padding-left: 10px;
+    margin-bottom: 6px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select,
+.modal-content button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+}
+
+.modal-close {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-button {
+    margin-top: 12px;
+}
+
+#stats-panel {
+    border: 1px solid #ccc;
+    padding: 12px;
+    margin-top: 16px;
+    background: #f9f9f9;
+}
+
+#stats-panel h2 {
+    margin-top: 0;
+}
+
+.report-lab {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+}
+
+#report-content {
+    max-height: 55vh;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+#report-content ul {
+    padding-left: 20px;
+}
+
+#report-content li {
+    margin-bottom: 6px;
+}

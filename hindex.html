@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios</title>
+    <link rel="stylesheet" href="style.css">
+   
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1>Laboratorios</h1>
+    <button id="open-lab-modal">Crear laboratorio</button>
+    <button id="open-report-button">Ver reporte</button>
+    <button id="open-stats-button">Consultar estadísticas</button>
+    <input id="search-lab-input" type="text" placeholder="Buscar laboratorio...">
+    <div id="lab-list"></div>
+
+    <div id="lab-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-lab-modal">×</span>
+            <h2 id="lab-modal-title">Crear laboratorio</h2>
+            <form id="lab-form">
+                <label>Nombre</label>
+                <input id="lab-nombre" type="text" required>
+                <label>Descripción</label>
+                <textarea id="lab-descripcion" rows="3" required></textarea>
+                <label>Ubicación</label>
+                <input id="lab-ubicacion" type="text" required>
+                <button class="modal-button" type="submit">Guardar laboratorio</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="equipo-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-equipo-modal">×</span>
+            <h2 id="equipo-modal-title">Agregar equipo</h2>
+            <form id="equipo-form">
+                <label>Nombre</label>
+                <input id="equipo-nombre" type="text" required>
+                <label>Componentes (separados por comas)</label>
+                <input id="equipo-componentes" type="text" required>
+                <label>Estado</label>
+                <select id="equipo-estado" required>
+                    <option value="Bueno">Bueno</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Malo">Malo</option>
+                </select>
+                <button class="modal-button" type="submit">Guardar equipo</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-report-modal">×</span>
+            <h2>Reporte de laboratorios</h2>
+            <div id="report-content"></div>
+            <button id="download-report-button" class="modal-button" type="button">Descargar reporte</button>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-stats-modal">×</span>
+            <h2>Estadísticas</h2>
+            <div id="stats-content"></div>
+        </div>
+    </div>
+</body>
+</html>
