@@ -1,48 +1,142 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Laboratorios</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Windows XP</title>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+
+  ::view-transition-new(root) {
+    animation-duration: 3.6s;
+  }
+
+        /* From Uiverse.io by Pradeepsaranbishnoi */
+        .container {
+            width: 150px;
+            height: 10px;
+            border: 2px solid #b2b2b2;
+            border-radius: 7px;
+            margin: 0 auto;
+            padding: 2px 1px;
+            overflow: hidden;
+            font-size: 0;
+        }
+
+        .box {
+            width: 9px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2838c7 0%, #5979ef 17%, #869ef3 32%, #869ef3 45%, #5979ef 59%, #2838c7 100%);
+            display: inline-block;
+            margin-right: 2px;
+            animation: loader 2s infinite;
+            animation-timing-function: linear;
+        }
+
+        .logo {
+            width: 220px;
+            margin: 50px auto;
+            margin-top: 20px;
+        }
+
+        .logo p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 16px;
+        }
+
+        .top:after {
+            content: "\00a9";
+            font-size: 10px;
+            position: relative;
+            top: -5px;
+            margin-left: 2px;
+        }
+
+        .mid {
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 36px;
+        }
+
+        .mid span {
+            font-size: 22px;
+            display: inline-block;
+            vertical-align: top;
+            color: #FF6821;
+            margin-top: -8px;
+        }
+
+        .logo .bottom {
+            font-size: 30px;
+            font-weight: 300;
+            line-height: 30px;
+            margin-left: 5px;
+        }
+
+        @keyframes loader {
+            0% {
+                transform: translate(-30px);
+            }
+
+            100% {
+                transform: translate(150px);
+            }
+        }
+
+        #centrar {
+            width: 98vw;
+            height: 98vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .window {
+            grid-row: 2;
+            grid-column: 2;
+            height: auto;
+            width: auto;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            setTimeout(() => {
+                window.location.href = "./contenido.html";
+            }, 5000)
+        }
+
+    </script>
 </head>
 
 <body>
-
-    <h1>Sistema de Laboratorios</h1>
-
-    <!-- Formulario Laboratorios -->
-    <div class="section">
-        <h2>Nuevo/Editar Laboratorio</h2>
-        <input type="hidden" id="labId">
-        <input type="text" id="labTitulo" placeholder="Título del Lab">
-        <input type="text" id="labDesc" placeholder="Descripción">
-        <input type="text" id="labUbic" placeholder="Ubicación">
-        <button onclick="guardarLab()">Guardar Laboratorio</button>
+    <div id="centrar">
+        <div class="window">
+            <div class="logo">
+                <p class="top">Microsoft</p>
+                <p class="mid">Windows<span>XP</span></p>
+                <p class="bottom">Professional</p>
+            </div>
+            <div class="container">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
     </div>
-
-    <!-- Listado -->
-    <div id="labsContainer"></div>
-
-    <!-- Reporte y Estadísticas -->
-    <div class="section">
-        <h2>Reporte General y Estadísticas</h2>
-        <div id="stats"></div>
-        <table id="reportTable">
-            <thead>
-                <tr>
-                    <th>Lab</th>
-                    <th>Equipo</th>
-                    <th>Componentes</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <br>
-        <button onclick="downloadReport()" style="background: #007bff;">Descargar Reporte (CSV)</button>
-    </div>
+    <audio src="audioweba.weba" autoplay></audio>
 </body>
 
 </html>

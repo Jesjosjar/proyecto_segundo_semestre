@@ -1,3 +1,7 @@
+@view-transition {
+  navigation: auto;
+}
+
 body {
     font-family: sans-serif;
     margin: 20px;
@@ -12,27 +16,17 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    border-bottom: 2px solid #333;
-}
-
-input,
-select {
+input {
     margin: 5px;
     padding: 8px;
 }
 
 button {
     padding: 8px 12px;
-    cursor: pointer;
     background: #a72828;
     color: white;
     border: none;
     border-radius: 4px;
-}
-
-.btn-del {
-    background: #dc3545;
 }
 
 .lab-card {
@@ -48,9 +42,82 @@ table {
     margin-top: 10px;
 }
 
-th,
-td {
+th,td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+}
+
+#dialog_reporte {
+    width: 80vw;
+    height: 60vh;
+    border: none;
+    border-radius: 5px;
+    padding: 5vh 5vw;
+}
+
+.titulo_reporte {
+    top: 0;
+    position: sticky;
+    background-color: #004bcf33;
+    backdrop-filter: blur(3px);
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+#buttons_report {
+    position: sticky;
+    bottom:0
+}
+
+table {
+    height: 50vh;
+    width: 80vw;
+}
+/* From Uiverse.io by satyamchaudharydev */ 
+button {
+  --bg: #e74c3c;
+  --text-color: #fff;
+  position: relative;
+  width: 150px;
+  border: none;
+  background: var(--bg);
+  color: var(--text-color);
+  padding: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s;
+  border-radius: 5px;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button:active {
+  top: 4px;
+  box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
+}
+/* From Uiverse.io by reglobby */ 
+input {
+  border: 2px solid transparent;
+  width: 15em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+input:hover,
+input:focus {
+  border: 2px solid #4A9DEC;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
 }
