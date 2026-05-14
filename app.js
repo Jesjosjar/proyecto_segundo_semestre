@@ -1,10 +1,10 @@
-let labs = JSON.parse(localStorage.getItem('labs_data')) || [];
-let idGen = JSON.parse(localStorage.getItem('id_gen')) || 0;
+let labs = (JSON.parse(localStorage.getItem('labs_data')) || []).map(lab => ({ ...lab, items: lab.items || [] }))
+let idGen = JSON.parse(localStorage.getItem('id_gen')) || 0
 
 function guardarLab() {
-    const title = document.getElementById('labTitulo').value;
-    const desc = document.getElementById('labDesc').value;
-    const ubica = document.getElementById('labUbic').value;
+    const title = document.getElementById('labTitulo').value
+    const desc = document.getElementById('labDesc').value
+    const ubica = document.getElementById('labUbic').value
 
     if (title.trim() != '' || desc.trim() != '' || ubica.trim() != '') {
         labs.push({
@@ -19,100 +19,100 @@ function guardarLab() {
         localStorage.setItem('id_gen', JSON.stringify(idGen))
         update()
     } else {
-        alert("Por favor, complete todos los campos.");
+        alert("Por favor, complete todos los campos.")
     }
 }
 
 function deleteLab(id) {
     labs = labs.filter((lab) => {
         return lab.id !== id
-    });
-    localStorage.setItem('labs_data', JSON.stringify(labs));
-    update();
+    })
+    localStorage.setItem('labs_data', JSON.stringify(labs))
+    update()
 }
 
 function editLab(id) {
-    let lab = labs.find(labo => labo.id == id);
-    lab.title = prompt("Nuevo título:", lab.title);
-    lab.desc = prompt("Nueva descripción:", lab.desc);
-    lab.ubica = prompt("Nueva ubicación:", lab.ubica);
-    localStorage.setItem('labs_data', JSON.stringify(labs));
-    update();
+    let lab = labs.find(labo => labo.id == id)
+    lab.title = prompt("Nuevo título:", lab.title)
+    lab.desc = prompt("Nueva descripción:", lab.desc)
+    lab.ubica = prompt("Nueva ubicación:", lab.ubica)
+    localStorage.setItem('labs_data', JSON.stringify(labs))
+    update()
 }
 
 function addItem(labId) {
-    const title = prompt("Título del equipo:");
-    const comp = prompt("Componentes:");
-    const status = prompt("Estado (Funcional/Mantenimiento):");
+    const title = prompt("Título del equipo:")
+    const comp = prompt("Componentes:")
+    const status = prompt("Estado (Funcional/Mantenimiento):")
 
-    const lab = labs.find(l => l.id === labId);
+    const lab = labs.find(l => l.id === labId)
 
     lab.items.push({
         'id': idGen,
         'title': title,
         'status': status,
         'comp': comp
-    });
-    idGen++;
-    localStorage.setItem('id_gen', JSON.stringify(idGen));
-    localStorage.setItem('labs_data', JSON.stringify(labs));
-    update();
+    })
+    idGen++
+    localStorage.setItem('id_gen', JSON.stringify(idGen))
+    localStorage.setItem('labs_data', JSON.stringify(labs))
+    update()
 }
 
 function deleteItem(labId, itemId) {
-    const lab = labs.find(l => l.id == labId);
-    lab.items = lab.items.filter(i => i.id != itemId);
-    localStorage.setItem('labs_data', JSON.stringify(labs));
-    update();
+    const lab = labs.find(l => l.id == labId)
+    lab.items = lab.items.filter(i => i.id != itemId)
+    localStorage.setItem('labs_data', JSON.stringify(labs))
+    update()
 }
 
 function update() {
-    const container = document.getElementById('labsContainer');
+    const container = document.getElementById('labsContainer')
 
     container.innerHTML = '<h2>Laboratorios</h2>'
     for (let e of labs) {
-        let ul_laboratorios = document.getElementById('ul_laboratorios');
+        let ul_laboratorios = document.getElementById('ul_laboratorios')
 
-        let containerLab = document.createElement('div');
-        let tituloLab = document.createElement('h3');
-        let descripcionLab = document.createElement('p');
-        let botonEditar = document.createElement('button');
-        let botonBorrar = document.createElement('button');
-        let botonAgregar = document.createElement('button');
-        let ulEquipos = document.createElement('ul');
-        tituloLab.textContent = "titulo: " + e.title + " - Ubicacion: " + e.ubica + ")"
-        descripcionLab.textContent = "Descripcion: " + e.desc;
-        botonEditar.textContent = 'Editar';
-        botonBorrar.textContent = 'Borrar Lab';
-        botonAgregar.textContent = 'Agregar Equipo';
+        let containerLab = document.createElement('div')
+        let tituloLab = document.createElement('h3')
+        let descripcionLab = document.createElement('p')
+        let botonEditar = document.createElement('button')
+        let botonBorrar = document.createElement('button')
+        let botonAgregar = document.createElement('button')
+        let ulEquipos = document.createElement('ul')
+        tituloLab.textContent = "titulo: " + e.title + " - Ubicacion: " + e.ubica 
+        descripcionLab.textContent = "Descripcion: " + e.desc
+        botonEditar.textContent = 'Editar'
+        botonBorrar.textContent = 'Borrar Lab'
+        botonAgregar.textContent = 'Agregar Equipo'
 
         //funciones de los botones
-        botonEditar.onclick = () => editLab(e.id);
-        botonBorrar.onclick = () => deleteLab(e.id);
-        botonAgregar.onclick = () => addItem(e.id);
+        botonEditar.onclick = () => editLab(e.id)
+        botonBorrar.onclick = () => deleteLab(e.id)
+        botonAgregar.onclick = () => addItem(e.id)
 
         e.items.forEach(i => {
-            let liEquipo = document.createElement('li');
-            liEquipo.textContent = "titulo: " + i.title + " - Estado: " + i.status;
-            let botonBorrarEquipo = document.createElement('button');
-            botonBorrarEquipo.textContent = 'x';
-            botonBorrarEquipo.classList.add('btn-del');
+            let liEquipo = document.createElement('li')
+            liEquipo.textContent = "titulo: " + i.title + " - Estado: " + i.status
+            let botonBorrarEquipo = document.createElement('button')
+            botonBorrarEquipo.textContent = 'x'
+            botonBorrarEquipo.classList.add('btn-del')
             botonBorrarEquipo.onclick = () => {
-                deleteItem(e.id, i.id);
+                deleteItem(e.id, i.id)
             }
-            liEquipo.appendChild(botonBorrarEquipo);
-            ulEquipos.appendChild(liEquipo);
-        });
+            liEquipo.appendChild(botonBorrarEquipo)
+            ulEquipos.appendChild(liEquipo)
+        })
 
         //hacer append de los elementos
-        containerLab.classList.add('lab-card');
-        containerLab.appendChild(tituloLab);
-        containerLab.appendChild(descripcionLab);
-        containerLab.appendChild(botonEditar);
-        containerLab.appendChild(botonBorrar);
-        containerLab.appendChild(botonAgregar);
-        containerLab.appendChild(ulEquipos);
-        container.appendChild(containerLab);
+        containerLab.classList.add('lab-card')
+        containerLab.appendChild(tituloLab)
+        containerLab.appendChild(descripcionLab)
+        containerLab.appendChild(botonEditar)
+        containerLab.appendChild(botonBorrar)
+        containerLab.appendChild(botonAgregar)
+        containerLab.appendChild(ulEquipos)
+        container.appendChild(containerLab)
     }
 
     renderReport()
@@ -172,22 +172,22 @@ function renderReport() {
 
 }
 function downloadReport() {
-    let csv = "Laboratorio,Equipo,Componentes,Estado\n";
+    let csv = "Laboratorio,Equipo,Componentes,Estado\n"
     labs.forEach(lab => {
         lab.items.forEach(i => {
             csv += lab.title +',' + i.title + ',' + i.comp + ',' + i.status + "\n"
-        });
-    });
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
+        })
+    })
+    const blob = new Blob([csv], { type: 'text/csv' })
+    const url = window.URL.createObjectURL(blob)
     console.log(url)
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('download', 'reporte_laboratorios.csv');
-    a.click();
+    const a = document.createElement('a')
+    a.setAttribute('href', url)
+    a.setAttribute('download', 'reporte_laboratorios.csv')
+    a.click()
 }
 
 // Iniciar vista
 window.onload = () => {
-    update();
+    update()
 }
