@@ -21,7 +21,7 @@ body {
     border: 1px solid #ddd;
     padding: 10px;
     margin-top: 10px;
-    border-left: 5px solid #007bff;
+    border-left: 5px solid #f26d6d;
 }
 
 th,td {
@@ -30,13 +30,7 @@ th,td {
     text-align: left;
 }
 
-#dialog_reporte {
-    width: 80vw;
-    height: 60vh;
-    border: none;
-    border-radius: 5px;
-    padding: 5vh 5vw;
-}
+
 
 .titulo_reporte {
     top: 0;
